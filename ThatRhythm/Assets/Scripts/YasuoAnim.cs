@@ -19,9 +19,20 @@ public class YasuoAnim : MonoBehaviour
         {
             anim.SetBool("isAttacking", true);
         }
+          else if(Input.GetKey(KeyCode.Q))
+        {
+            anim.SetBool("isUsingSpell1a", true);
+        }
+        else if(Input.GetKey(KeyCode.R))
+        {
+            anim.SetBool("isUsingSpell4", true);
+        }
         else 
         {
             anim.SetBool("isAttacking", false);
+            anim.SetBool("isUsingSpell4", false);
+            anim.SetBool("isUsingSpell1a", false);
+
         }
     }
 }

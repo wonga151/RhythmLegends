@@ -6,7 +6,7 @@ public class NoteObject : MonoBehaviour
 {
     public bool canBePressed;
 
-    public KeyCode keyToPress;
+    public KeyCode keyToPress, keyToPress2;
 
     public GameObject hitEffect, goodEffect, perfectEffect, missEffect;
 
@@ -20,7 +20,7 @@ public class NoteObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(keyToPress))
+        if(Input.GetKeyDown(keyToPress) || Input.GetKeyDown(keyToPress2))
         {
             if(canBePressed)
             {
@@ -28,15 +28,15 @@ public class NoteObject : MonoBehaviour
 
                 // GameManager.instance.NoteHit();
 
-                float hitPosition = Mathf.Abs(Mathf.Abs(transform.position.x) - 4f);
+                float hitPosition = Mathf.Abs(Mathf.Abs(transform.position.x) - 4.5f);
 
-                if(hitPosition > 0.25f)
+                if(hitPosition > 0.3f)
                 {
                     Debug.Log("Hit");
                     GameManager.instance.NormalHit();
                     Instantiate(hitEffect, transform.position, hitEffect.transform.rotation);
                 } 
-                else if(hitPosition > 0.05f)
+                else if(hitPosition > 0.10f)
                 {
                     Debug.Log("Good Hit");
                     GameManager.instance.GoodHit();

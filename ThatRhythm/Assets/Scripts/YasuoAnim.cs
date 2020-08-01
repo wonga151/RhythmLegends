@@ -6,9 +6,14 @@ public class YasuoAnim : MonoBehaviour
 {
     private Animator anim;
 
+    private int attackCounter = 0;
+    
+    public int qCounter = 0;
+
     public AudioSource audioQ;
 
     public AudioSource audioQ2;
+    public AudioSource audioQ2Stacked;
     public AudioSource audioQ2Voice;
 
     public AudioSource audioQ3;
@@ -20,14 +25,12 @@ public class YasuoAnim : MonoBehaviour
     public AudioSource audioR;
     public AudioSource audioRVoice;
 
-    private int qCounter = 0;
-    private int attackCounter = 0;
-
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -48,33 +51,30 @@ public class YasuoAnim : MonoBehaviour
                 audioAttack2.Play();
 
             }
-            // else {
-            //     anim.SetBool("isAttacking", true);
-            //     attackCounter = 0;
-            // }
-            
 
         }
         else if(Input.GetKeyDown(KeyCode.Q))
         {
-            // anim.SetBool("isUsingSpell1a", true);
-            
             qCounter += 1;
 
             if(qCounter <= 1) {
                 audioQ.Play();
                 anim.SetBool("isUsingSpell1a", true);
 
+
             }
             else if(qCounter == 2) {
                 audioQ2.Play();
+                audioQ2Stacked.Play();
                 audioQ2Voice.Play();
+
                 anim.SetBool("isUsingSpell1b", true);
 
             }
             else {
                 audioQ3.Play();
                 audioQ3Voice.Play();
+
                 anim.SetBool("isUsingSpell1c", true);
 
                 qCounter = 0;

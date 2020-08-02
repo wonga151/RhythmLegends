@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public AudioSource theMusic;
+    public int musicProgress;
 
     public bool startPlaying;
 
@@ -119,7 +120,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        multiText.text = "Multiplier: x" + currentMultiplier; 
+        multiText.text = currentMultiplier + "x"; 
 
         // currentScore += scorePerNote * currentMultiplier;
         scoreText.text = "Score: " + currentScore;
@@ -156,9 +157,14 @@ public class GameManager : MonoBehaviour
         currentMultiplier = 1;
         multiplierTracker = 0;
 
-        multiText.text = "Multiplier: x" + currentMultiplier; 
+        multiText.text = currentMultiplier + "x"; 
 
         missedHits++;
 
+    }
+
+    public float getCurrentSongProgress() 
+    {
+        return (theMusic.time / theMusic.clip.length);
     }
 }

@@ -22,7 +22,7 @@ public class NoteObject : MonoBehaviour
     {
         if(Input.GetKeyDown(keyToPress) || Input.GetKeyDown(keyToPress2))
         {
-            if(canBePressed)
+            if(canBePressed && transform.position.x > -4.7f)
             {
                 gameObject.SetActive(false);
 
@@ -50,6 +50,10 @@ public class NoteObject : MonoBehaviour
                     Instantiate(perfectEffect, transform.position, perfectEffect.transform.rotation);
                 }
             }
+        }
+
+        if(transform.position.x < -5f) {
+            Destroy(this.gameObject);
         }
     }
 
